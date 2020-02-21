@@ -1,9 +1,9 @@
 import React from 'react';
-import './ViewWork.sass'
+import './ViewBlog.sass'
 import axios from 'axios';
 import Footer from '../../Footer/Footer'
 
-class ViewWork extends React.Component{
+class ViewBlog extends React.Component{
   constructor(props) {
 	 super(props);
 	 this.state = {
@@ -14,7 +14,7 @@ class ViewWork extends React.Component{
 
   async componentDidMount() {
 	 const id= this.props.match.params.id;
-	 await axios.get(`http://localhost:8888/works.php?id=${id}`)
+	 await axios.get(`http://localhost:8888/blog.php?id=${id}`)
 		.then(response => {
 		  this.setState({
 			 data: response.data
@@ -23,19 +23,19 @@ class ViewWork extends React.Component{
   }
 
   render() {
+
+
     return(
 		<>
-		  <div className="viewWrapperPortfolio">
+		  <div className="viewWrapperBlog">
 			 {Object.keys(this.state.data).map((item,i) => (
-				<div key={i} className="viewWrapperPortfolio__item">
+				<div key={i} className="viewWrapperBlog__item">
 				  <h3>{this.state.data[item].title}</h3>
-				  <div className="viewWrapperPortfolio__item--img">
-					 <img src={this.state.data[item].img_full} />
+				  <div className="viewWrapperBlog__item--img">
+					 <img src={this.state.data[item].img} />
 				  </div>
-				  <p>{this.state.data[item].description}</p>
-				  <p>{this.state.data[item].technology}</p>
+				  <p>{this.state.data[item].description_full}</p>
 				  <p>{this.state.data[item].date}</p>
-				  <a href={this.state.data[item].link} target="_blank">Перейти на сайт</a>
 					<div className="clearfix"></div>
 				</div>
 			 ))}
@@ -47,4 +47,4 @@ class ViewWork extends React.Component{
   }
 }
 
-export default ViewWork;
+export default ViewBlog;

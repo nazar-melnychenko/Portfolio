@@ -9,6 +9,7 @@ import Portfolio from '../Portfolio/Portfolio';
 import Blog from '../Blog/Blog';
 import Contacts from '../Contacts/Contacts';
 import ViewWork from "../Portfolio/ViewWork/ViewWork";
+import ViewBlog from '../Blog/ViewBlog/ViewBlog'
 import NoMatchPage from '../NoMatchPage/NoMatchPage'
 
 
@@ -31,6 +32,7 @@ class App extends React.Component{
 				  <Route exact path='/portfolio/' component={ Portfolio } />
 				  <Route exact path="/portfolio/:id" component={ ViewWork }/>
 				  <Route exact path='/blog/' component={ Blog } />
+				  <Route exact path='/blog/:id' component={ ViewBlog } />
 				  <Route exact path='/contacts/' component={ Contacts } />
 				  <Route  path='*' component={NoMatchPage} />
 				</Switch>

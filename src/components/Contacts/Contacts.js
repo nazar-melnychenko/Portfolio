@@ -2,7 +2,8 @@ import React from 'react';
 import './Contacts.sass';
 import axios from 'axios';
 import Title from '../Title/Title';
-import Footer from '../Footer/Footer'
+import Footer from '../Footer/Footer';
+import SimpleMap from './GoogleMap/GoogleMap';
 
 class Contacts extends React.Component{
 
@@ -129,6 +130,7 @@ class Contacts extends React.Component{
 				</div>
 			 </div>
 		  </div>
+		  <SimpleMap />
 		  <Footer />
 		</div>
 	 );

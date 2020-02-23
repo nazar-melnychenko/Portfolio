@@ -2,6 +2,7 @@ import React from 'react';
 import './Contacts.sass';
 import axios from 'axios';
 import Title from '../Title/Title';
+import Social from '../Social/Social';
 import Footer from '../Footer/Footer';
 import SimpleMap from './GoogleMap/GoogleMap';
 
@@ -27,11 +28,16 @@ class Contacts extends React.Component{
   }
 
   handleInputChange = (e) => {
-	 this.setState({state: this.state.errors.name = ''});
-	 this.setState({state: this.state.errors.email = ''});
-	 this.setState({state: this.state.errors.text = ''});
-	 this.setState({state: this.state.errors.name = ''});
-	 this.setState({state: this.state.general = ''});
+	 this.setState(prevState =>({
+		errors:{
+		  ...prevState.errors,
+		  name: '',
+		  email: '',
+		  text: '',
+		},
+		general: ''
+	 }));
+
 	 const name = e.target.name;
 	 this.setState({state:
 		this.state.data[name] = e.target.value
@@ -60,11 +66,17 @@ class Contacts extends React.Component{
 			 console.log(error);
 		  });
 
-	 this.setState({state: this.state.data.name = ''});
-	 this.setState({state: this.state.data.tel = ''});
-	 this.setState({state: this.state.data.email = ''});
-	 this.setState({state: this.state.data.subject = ''});
-	 this.setState({state: this.state.data.text = ''});
+	 this.setState(prevState =>({
+		data:{
+		  ...prevState.data,
+		  name: '',
+		  tel: '',
+		  email: '',
+		  subject: '',
+		  text: '',
+		}
+	 }));
+
 
 	 setTimeout(() =>(
 		this.setState({general:''})
@@ -126,7 +138,24 @@ class Contacts extends React.Component{
 				  </form>
 				</div>
 				<div className="formWrapper__contacts">
-				  2
+				  <p>Зв'яжіться зі мною будь-яким зручним для Вас способом</p>
+				  <hr />
+				  <span>
+					 Телефон:<br />
+					 <a href="tel:+380957511806">+380 (95) 751 18 06</a><br />
+					 <i>( Viber, Telegram, Whatsapp )</i>
+				  </span><br />
+				  <span>
+					 E-mail:<br />
+					 <a href="mailto:nazar.melnychenko@gmail.com">nazar.melnychenko@gmail.com</a>
+				  </span>
+				  <br />
+				  <span>
+					 Skype:<br />
+					 <a href="skype:skay.net?call">skay.net</a>
+				  </span>
+				  <hr />
+				  <Social />
 				</div>
 			 </div>
 		  </div>

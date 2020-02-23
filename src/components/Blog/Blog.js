@@ -5,6 +5,7 @@ import Footer from '../Footer/Footer'
 import {NavLink} from "react-router-dom";
 import axios from "axios";
 
+
 class Blog extends React.Component{
   constructor(props) {
 	 super(props);
@@ -17,7 +18,10 @@ class Blog extends React.Component{
 	 };
   }
 
+
+
   componentDidMount() {
+
 	 this.setState({isLoad: true});
 	 if (sessionStorage['blog']) {
 		this.setState({
@@ -28,15 +32,13 @@ class Blog extends React.Component{
 		axios.get(`http://localhost:8888/blog.php`)
 		  .then(response => {
 			 this.setState({
-				data: response.data
+				data: response.data,
+				isLoad: false,
 			 });
 		  })
 		  .catch(error => {
 			 console.log(error)
 		  });
-		this.setState({
-		  isLoad: false,
-		});
 	 }
   }
 
@@ -82,16 +84,22 @@ class Blog extends React.Component{
 			 <div className="content">
 				<div className="content__items">
 				  {Object.keys(this.state.data).map((item, i) => (
+				    <>
 					 <div key={i} className="content__items--item">
-						<img src={this.state.data[item].img} alt={i}/>
-						<h3>{this.state.data[item].title}</h3>
-						<p>{this.state.data[item].description}<NavLink to={`/blog/${this.state.data[item].id}`}>&ensp;&ensp;Читати далі...</NavLink></p>
-						<p>{this.state.data[item].date}</p>
-						<div className="clearfix"></div>
+						<div className="img">
+						  <img src={this.state.data[item].img} alt={i}/>
+						</div>
+						<div className={i % 2 ? 'wrapperItems' : 'wrapperItems right'}>
+						  <h4>{this.state.data[item].title}</h4>
+						  <p className="wrapperItems__description">{this.state.data[item].description}<NavLink to={`/blog/${this.state.data[item].id}`}>&ensp;&ensp;Читати далі...</NavLink></p>
+						  <p className="wrapperItems__data">Дата публікації: {this.state.data[item].date}</p>
+						</div>
 					 </div>
+					</>
 				  ))}
+
 				  {this.state.btnShow && !sessionStorage['BtnBlog'] ?
-					 this.state.isLoad ? <button>Загрузка</button> : <button onClick={this.load}>Загрузити ще</button>
+					 this.state.isLoad ? <img className="load" src="img/load.png" alt="Загрузка"/> : <div className="BtnLoad" onClick={this.load}>Загрузити ще...</div>
 					 : null}
 				</div>
 			 </div>

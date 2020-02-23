@@ -4,7 +4,7 @@
 		background-color: #f1f1f1
 		color: black
 		border-radius: 10px 10px 0 0
-		padding: 20px
+		padding: 20px 20px 50px 20px
 		box-shadow: 0 0 10px #fff
 		
 		h3
@@ -47,13 +47,15 @@
 			display: flex
 			flex-wrap: wrap
 			justify-content: space-around
-			button
+			.load
+				margin: 0 auto
+				display: block
 				position: absolute
-				bottom: -10px
+				bottom: -50px
 				left: 50%
-				width: 100px
-				height: 20px
 				transform: translateX(-50%)
+				
+				
 			&--item
 				flex-grow: 1
 				flex-basis: 230px
@@ -104,3 +106,11 @@
 				img
 					width: 100%
 					height: 100%
+					
+		button
+			position: absolute
+			bottom: -40px
+			left: 50%
+			width: 100px
+			height: 20px
+			transform: translateX(-50%)

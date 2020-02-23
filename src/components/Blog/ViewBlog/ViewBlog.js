@@ -1,7 +1,8 @@
 import React from 'react';
 import './ViewBlog.sass'
 import axios from 'axios';
-import Footer from '../../Footer/Footer'
+import Footer from '../../Footer/Footer';
+import Comments from '../Comments/Comments'
 
 class ViewBlog extends React.Component{
   constructor(props) {
@@ -11,10 +12,8 @@ class ViewBlog extends React.Component{
 	 }
   }
 
-
-  async componentDidMount() {
-	 const id= this.props.match.params.id;
-	 await axios.get(`http://localhost:8888/blog.php?id=${id}`)
+  componentDidMount() {
+	 axios.get(`http://localhost:8888/blog.php?id=${this.props.match.params.id}`)
 		.then(response => {
 		  this.setState({
 			 data: response.data
@@ -23,8 +22,6 @@ class ViewBlog extends React.Component{
   }
 
   render() {
-
-
     return(
 		<>
 		  <div className="viewWrapperBlog">
@@ -35,11 +32,13 @@ class ViewBlog extends React.Component{
 					 <img src={this.state.data[item].img} />
 				  </div>
 				  <p>{this.state.data[item].description_full}</p>
-				  <p>{this.state.data[item].date}</p>
+				  <hr />
+				  <p className="viewWrapperBlog__item--data">Дата публікації: {this.state.data[item].date}</p>
 					<div className="clearfix"></div>
+
 				</div>
 			 ))}
-
+			 <Comments id={this.props.match.params.id}/>
 		  </div>
 		  <Footer />
 		</>

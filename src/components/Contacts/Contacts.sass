@@ -16,14 +16,13 @@
 		justify-content: space-around
 		flex-wrap: wrap
 		&__form
+			padding: 0 35px
 			flex-grow: 1
 			flex-basis: 300px
 			form
-				width: 100%
 				text-align: center
 				span
 					text-align: left
-					width: 70%
 					color: red
 					display: inline-block
 					font-size: 12px
@@ -32,7 +31,7 @@
 					top: -7px
 				input,
 				textarea
-					width: 70%
+					width: 100%
 					padding: 10px
 					margin: 7px 0
 					outline: none
@@ -67,7 +66,44 @@
 
 		
 		&__contacts
-			border: 1px solid red
+			padding: 0 35px
+			text-align: center
 			flex-grow: 1
-			flex-basis: 300px
+			flex-basis: 250px
+			margin-top: 40px
+			p
+				font-size: 18px
+				font-weight: 300
+				margin-bottom: 40px
+				color: rgba(0, 0, 0, 0.7)
+			hr
+				width: 100%
+				color: white
+			span
+				display: inline-block
+				margin: 20px
+				line-height: 25px
+				font-size: 20px
+				font-weight: 300
+				a
+					text-decoration: none
+					color: #000
+					font-size: 20px
+					font-weight: 500
+				i
+					font-size: 14px
+					color: rgba(0, 0, 0, 0.61)
+			.social
+				margin-top: 20px
+				justify-content: center
+				a
+					color: #000
+					border: 1px solid #000
+					margin-right: 20px
+					&:hover
+						box-shadow: 0 0 10px rgba(15, 255, 40, 0.9)
+						color: rgba(15, 255, 40, 0.9)
+						border: 1px solid rgba(15, 255, 40, 0.9)
+					
+				
 		

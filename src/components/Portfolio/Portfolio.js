@@ -28,15 +28,13 @@ class Portfolio extends React.Component {
 		axios.get(`http://localhost:8888/works.php`)
 		  .then(response => {
 			 this.setState({
-				data: response.data
+				data: response.data,
+				isLoad: false
 			 });
 		  })
 		  .catch(error => {
 			 console.log(error)
 		  });
-		this.setState({
-		  isLoad: false,
-		});
 	 }
   }
 
@@ -77,7 +75,6 @@ class Portfolio extends React.Component {
 	 return (
 
 		<div className='portfolioWrapper'>
-
 		  {this.state.isntWork ? <div className="maseeg">Більше робіт не знайдено</div> : null}
 		  <Title title='Портфоліо'/>
 		  <div className="portfolioWrapper__contents">
@@ -106,7 +103,7 @@ class Portfolio extends React.Component {
 					 </div>
 				  ))}
 				  {this.state.btnShow && !sessionStorage['BtnPortfolio'] ?
-					 this.state.isLoad ? <button>Загрузка</button> : <button onClick={this.load}>Загрузити ще</button>
+					 this.state.isLoad ? <img className="load" src="img/load.png" alt="Загрузка"/> : <button onClick={this.load}>Загрузити ще</button>
 					 : null}
 				</div>
 			 </div>

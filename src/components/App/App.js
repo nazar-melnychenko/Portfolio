@@ -12,8 +12,6 @@ import ViewWork from "../Portfolio/ViewWork/ViewWork";
 import ViewBlog from '../Blog/ViewBlog/ViewBlog'
 import NoMatchPage from '../NoMatchPage/NoMatchPage'
 
-
-
 class App extends React.Component{
   constructor(props) {
 	 super(props)

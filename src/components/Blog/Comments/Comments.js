@@ -74,31 +74,41 @@ class Comments extends React.Component {
   handleSubmit = (id,e) => {
     const key = localStorage['commentKey'];
 	 if (!this.state.comments.name){
-	   console.log(this.state.comments);
 		this.setState({state: this.state.errors.name = 'Введіть ім\'я'});
 	 }else if (!this.state.comments.text) {
 		this.setState({state: this.state.errors.text = 'Введіть коментар'});
 	 }else{
+		const name = e.target.name;
+		this.setState(prevState =>({
+		  comments:{
+			 ...prevState.comments,
+			 [name]: ''
+		  }}));
 		this.setState({state: this.state.comments.commentKey = key});
-		axios.post(`http://localhost:8888/comments.php?blogId=${id}`,
+		axios.post(`http://localhost:8888/comments.php?id=${id}`,
 		  JSON.stringify(this.state.comments)
 			)
 		  .then((response) => {
-				console.log(response.data)
+				if(response){
+				  axios.get(`http://localhost:8888/comments.php?id=${this.props.id}`)
+					 .then(response => {
+						this.setState({
+						  data: response.data
+						})})
+				}
 		  })
-		//   .catch(function (error) {
-		// 	 console.log(error);
-		//   });
-		//
-		// this.setState(prevState =>({
-		//   comments:{
-		// 	 ...prevState.comments,
-		// 	 name: '',
-		// 	 text: '',
-		//   }
-		// }));
-		console.log(this.state.comments);
-	 }
+		  .catch(function (error) {
+			 console.log(error);
+		  });
+
+	 	}
+	 this.setState(prevState =>({
+		comments:{
+		  ...prevState.comments,
+		  name: '',
+		  text: '',
+		}
+	 }));
 	 e.preventDefault();
   };
 
@@ -126,7 +136,7 @@ class Comments extends React.Component {
 				type="text"
 				name="name"
 				placeholder="Ім'я *"
-				value={this.state.value}
+				value={this.state.comments.name}
 				onChange={this.handleInputChange}
 			 /><br />
 			 <span>{this.state.errors.name ? this.state.errors.name : null}</span>
@@ -134,22 +144,20 @@ class Comments extends React.Component {
 				rows="7"
 				name="text"
 				placeholder="Коментар *"
-				value={this.state.value}
+				value={this.state.comments.text}
 				onChange={this.handleInputChange}
 			 /><br />
 			 <span>{this.state.errors.text ? this.state.errors.text : null}</span>
 			 <input type="submit" onClick={(e) => this.handleSubmit(this.props.id,e)} value='Відправити' />
 		  </form>
-		  <hr />
 		  {this.state.data != '' ?
 			 Object.keys(this.state.data).map((item, i) => (
 				<div key={i} className="content__items--item">
+				  <hr />
 				  <div>{this.state.data[item].name}</div>
-				  <div>{this.state.data[item].text}</div>
 				  <div>{this.state.data[item].date}</div>
-				  <br/>
-				  <span
-					 onClick={() => this.delete(this.state.data[item].id)}>X - {this.state.data[item].id}</span><br/><br/><br/><br/>
+				  {this.state.data[item].key_user == localStorage['commentKey'] ? <span onClick={() => this.delete(this.state.data[item].id)}>X</span> : null}
+				  <div>{this.state.data[item].text}</div>
 				</div>
 			 ))
 			 :

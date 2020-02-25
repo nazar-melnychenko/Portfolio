@@ -1,7 +1,8 @@
 import React from 'react';
 import './ViewWork.sass'
 import axios from 'axios';
-import Footer from '../../Footer/Footer'
+import Footer from '../../Footer/Footer';
+
 
 class ViewWork extends React.Component{
   constructor(props) {
@@ -30,16 +31,16 @@ class ViewWork extends React.Component{
 				<div key={i} className="viewWrapperPortfolio__item">
 				  <h3>{this.state.data[item].title}</h3>
 				  <div className="viewWrapperPortfolio__item--img">
-					 <img src={this.state.data[item].img_full} />
+					 <img src={this.state.data[item].img_full} alt={this.state.data[item].title}/>
 				  </div>
-				  <p>{this.state.data[item].description}</p>
-				  <p>{this.state.data[item].technology}</p>
-				  <p>{this.state.data[item].date}</p>
-				  <a href={this.state.data[item].link} target="_blank">Перейти на сайт</a>
+				  <p className="date">Дата публікації: {this.state.data[item].date}</p>
+				  <p className="description">{this.state.data[item].description}</p>
+				  <p>Використовувались технології:</p>
+				  <p className="technology">{this.state.data[item].technology}</p>
+				  <a className="BtnLoad" href={this.state.data[item].link} target="_blank">Перейти на сайт</a>
 					<div className="clearfix"></div>
 				</div>
 			 ))}
-
 		  </div>
 		  <Footer />
 		</>

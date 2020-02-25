@@ -5,24 +5,51 @@
 	padding: 20px
 	box-shadow: 0 0 10px #fff
 	min-height: 500px
+	
 	h3
 		text-align: center
 		padding: 20px
+	
 	&__item
+		.description
+			margin: 0 0 50px
+		.date
+			font-size: 12px
+			font-style: italic
+			text-align: right
+		.technology
+			font-style: italic
+		
+		.BtnLoad
+			display: inline-block
+			margin-top: 50px
+			cursor: pointer
+			padding: 7px 15px
+			border-radius: 7px
+			background-color: #a8a8a8
+			text-align: center
+			color: white
+			text-decoration: none
+			
+			&:hover
+				background-color: rgba(15, 255, 40, 0.9)
+		
 		&--img
 			position: relative
 			overflow-y: scroll
 			max-width: 600px
 			max-height: 700px
 			float: left
-			margin: 0 10px
+			margin: 0 10px 20px
 			transform: rotateY(14deg) rotateX(14deg)
 			box-shadow: -10px 10px 30px #141414
+			
 			img
-				width: 100%		
+				width: 100%
+	
 	p
 		margin: 10px
-		
+	
 	.clearfix
 		clear: both
 		

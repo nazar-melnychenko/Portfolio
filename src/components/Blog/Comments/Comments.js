@@ -152,12 +152,12 @@ class Comments extends React.Component {
 		  </form>
 		  {this.state.data != '' ?
 			 Object.keys(this.state.data).map((item, i) => (
-				<div key={i} className="content__items--item">
+				<div key={i} className="comments__items">
 				  <hr />
-				  <div>{this.state.data[item].name}</div>
-				  <div>{this.state.data[item].date}</div>
-				  {this.state.data[item].key_user == localStorage['commentKey'] ? <span onClick={() => this.delete(this.state.data[item].id)}>X</span> : null}
-				  <div>{this.state.data[item].text}</div>
+				  <span className="comments__items--name">{this.state.data[item].name}</span>
+				  <span className="comments__items--date">{this.state.data[item].date}</span>
+				  {this.state.data[item].key_user == localStorage['commentKey'] ? <span className="comments__items--delete" onClick={() => this.delete(this.state.data[item].id)}>[ Видалити ]</span> : null}
+				  <div className="comments__items--text">{this.state.data[item].text}</div>
 				</div>
 			 ))
 			 :

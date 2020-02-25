@@ -3,6 +3,7 @@ import './App.sass';
 import { Route, Switch } from 'react-router-dom';
 
 import Nav from '../Nav/Nav';
+import MobileMenu from '../MobileMenu/MobileMenu'
 import Main from '../Main/Main';
 import About from '../About/About';
 import Portfolio from '../Portfolio/Portfolio';
@@ -20,6 +21,9 @@ class App extends React.Component{
   render() {
 	 return(
 		  <div className='wrapper'>
+			 <nav className="mobile">
+				<MobileMenu />
+			 </nav>
 			 <nav className='nav'>
 				<Nav />
 			 </nav>

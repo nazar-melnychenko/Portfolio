@@ -22,6 +22,7 @@ class Portfolio extends React.Component {
 	 if (sessionStorage['portfolio']) {
 		this.setState({
 		  data: JSON.parse(sessionStorage['portfolio']),
+		  limit: JSON.parse(sessionStorage['portfolioLimit']),
 		  isLoad: false,
 		})
 	 } else {
@@ -68,6 +69,7 @@ class Portfolio extends React.Component {
 
   componentWillUnmount() {
 	 sessionStorage['portfolio'] = JSON.stringify(this.state.data);
+	 sessionStorage['portfolioLimit'] = JSON.stringify(this.state.limit);
   }
 
   render() {
@@ -102,10 +104,10 @@ class Portfolio extends React.Component {
 						</div>
 					 </div>
 				  ))}
-				  {this.state.btnShow && !sessionStorage['BtnPortfolio'] ?
-					 this.state.isLoad ? <img className="load" src="img/load.png" alt="Загрузка"/> : <button onClick={this.load}>Загрузити ще</button>
-					 : null}
 				</div>
+				{this.state.btnShow && !sessionStorage['BtnPortfolio'] ?
+				  this.state.isLoad ? <img className="load" src="img/load.png" alt="Загрузка"/> : <div className="BtnLoad" onClick={this.load}>Загрузити ще...</div>
+				  : null}
 			 </div>
 		  </div>
 		  <Footer/>

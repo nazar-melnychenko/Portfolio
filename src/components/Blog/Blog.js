@@ -26,6 +26,7 @@ class Blog extends React.Component{
 	 if (sessionStorage['blog']) {
 		this.setState({
 		  data: JSON.parse(sessionStorage['blog']),
+		  limit: JSON.parse(sessionStorage['blogLimit']),
 		  isLoad: false,
 		})
 	 } else {
@@ -72,6 +73,7 @@ class Blog extends React.Component{
 
   componentWillUnmount() {
 	 sessionStorage['blog'] = JSON.stringify(this.state.data);
+	 sessionStorage['blogLimit'] = JSON.stringify(this.state.limit);
   }
 
   render() {

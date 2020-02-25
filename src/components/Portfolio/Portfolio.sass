@@ -9,13 +9,34 @@
 		
 		h3
 			text-align: center
-			padding: 10px
+			padding: 20px 0 30px
+			font-size: 30px
+			font-style: italic
 	
 	.content
 		display: flex
 		flex-wrap: wrap
 		position: relative
 		min-height: 300px
+		.load
+			position: absolute
+			bottom: -50px
+			left: 50%
+			transform: translateX(-50%)
+		.BtnLoad
+			margin: 0 auto -35px
+			cursor: pointer
+			width: 137px
+			height: 100%
+			padding: 7px
+			border-radius: 7px
+			background-color: #a8a8a8
+			text-align: center
+			color: white
+			&:hover
+				background-color: rgba(15, 255, 40, 0.9)
+		
+		
 		//&__nav
 		//	flex-basis: 150px
 		//	flex-grow: 1
@@ -47,19 +68,11 @@
 			display: flex
 			flex-wrap: wrap
 			justify-content: space-around
-			.load
-				margin: 0 auto
-				display: block
-				position: absolute
-				bottom: -50px
-				left: 50%
-				transform: translateX(-50%)
-				
-				
 			&--item
 				flex-grow: 1
 				flex-basis: 240px
-				max-height: 200px
+				max-height: 165px
+				max-width: 320px
 				display: flex
 				position: relative
 				margin: 20px
@@ -103,14 +116,8 @@
 							text-decoration: none
 							&:hover
 								color: black
+				
 				img
 					width: 100%
 					height: 100%
 					
-		button
-			position: absolute
-			bottom: -40px
-			left: 50%
-			width: 100px
-			height: 20px
-			transform: translateX(-50%)

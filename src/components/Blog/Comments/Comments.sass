@@ -6,8 +6,9 @@
 		max-width: 150px
 		margin: 0 auto
 	form
-		margin: 20px
+		margin: 20px auto
 		max-width: 700px
+		
 		input,
 		textarea
 			width: 100%
@@ -29,5 +30,33 @@
 	hr
 		color: white
 		margin: 40px 0 5px
+		
+	&__items
+		margin: 0 auto
+		max-width: 700px
+		color: rgba(0, 0, 0, 0.9)
+		
+	
+		&--name
+			padding: 15px
+			&:before
+				content: '>>'
+				font-size: 10px
+				vertical-align: middle
+				padding-right: 5px
+		&--date
+			padding-right: 15px
+			font-size: 12px
+			font-style: italic
+		&--delete
+			cursor: pointer
+			font-size: 12px
+			font-weight: 700
+			color: #1612bb
+		&--text
+			margin-top: 20px
+			padding: 0 15px
+			
+		
 
 			

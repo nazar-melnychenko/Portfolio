@@ -2,18 +2,24 @@ import React from 'react';
 import './Portfolio.sass';
 import Title from '../Title/Title';
 import Footer from '../Footer/Footer'
-import {NavLink} from 'react-router-dom';
+import { NavLink }  from 'react-router-dom';
 import axios from "axios";
+import _ from "lodash";
+import Zoom from 'react-reveal/Zoom';
+import Bounce from 'react-reveal/Bounce';
 
 class Portfolio extends React.Component {
   constructor(props) {
 	 super(props);
 	 this.state = {
+		dataCopy: '',
 		data: '',
 		limit: 3,
 		btnShow: true,
 		isLoad: false,
-		isntWork: false
+		isntWork: false,
+		isFound: true,
+		class: 'all',
 	 };
   }
 
@@ -21,31 +27,40 @@ class Portfolio extends React.Component {
 	 this.setState({isLoad: true});
 	 if (sessionStorage['portfolio']) {
 		this.setState({
+		  dataCopy: JSON.parse(sessionStorage['portfolio']),
 		  data: JSON.parse(sessionStorage['portfolio']),
 		  limit: JSON.parse(sessionStorage['portfolioLimit']),
 		  isLoad: false,
-		})
+		});
 	 } else {
 		axios.get(`http://localhost:8888/works.php`)
 		  .then(response => {
 			 this.setState({
+				dataCopy: response.data,
 				data: response.data,
-				isLoad: false
+				isLoad: false,
 			 });
 		  })
 		  .catch(error => {
 			 console.log(error)
 		  });
 	 }
+
   }
 
   load = () => {
-	 this.setState({isLoad: true});
+	 this.setState({
+		isLoad: true,
+		data: this.state.dataCopy,
+		isFound: true,
+		class: 'all'
+	 });
 	 let lim = this.state.limit;
 	 axios.get(`http://localhost:8888/works.php?limit=${lim}`)
 		.then(response => {
 		  if (response.data) {
 			 this.setState({
+				dataCopy: this.state.data.concat(response.data),
 				data: this.state.data.concat(response.data),
 				limit: this.state.limit + 3
 			 });
@@ -67,35 +82,57 @@ class Portfolio extends React.Component {
 		});
   };
 
+  hendlefilter = (filter) => {
+	 this.setState({
+		isFound: true,
+		class: filter
+	 })
+    if(filter === 'all'){
+		this.setState({
+		  data: this.state.dataCopy
+		})
+	 } else {
+		const filtered = _.filter(this.state.dataCopy, friend => friend.filter === filter);
+		this.setState({
+		  data: filtered,
+		});
+		if(filtered == ''){
+		  this.setState({
+			 isFound: false
+		  })
+		}
+	 }
+
+  };
+
   componentWillUnmount() {
-	 sessionStorage['portfolio'] = JSON.stringify(this.state.data);
+	 sessionStorage['portfolio'] = JSON.stringify(this.state.dataCopy);
 	 sessionStorage['portfolioLimit'] = JSON.stringify(this.state.limit);
   }
 
   render() {
-
 	 return (
-
 		<div className='portfolioWrapper'>
-		  {this.state.isntWork ? <div className="maseeg">Більше робіт не знайдено</div> : null}
+		  {this.state.isntWork ? <Bounce right><div className="maseeg">Більше робіт не знайдено</div></Bounce> : null}
 		  <Title title='Портфоліо'/>
 		  <div className="portfolioWrapper__contents">
 			 <h3>Портфоліо</h3>
 			 <div className="content">
-				{/*<div className="content__nav">*/}
-				{/*<h4>Категорії:</h4>*/}
-				{/*<ul>*/}
-				{/*<li className="active" data-filter="*">Всі</li>*/}
-				{/*<li data-filter=".lending">Лендінг</li>*/}
-				{/*<li data-filter=".portal">Портали</li>*/}
-				{/*<li data-filter=".im">Інтернет-магазин</li>*/}
-				{/*<li data-filter=".portfolio">Портфоліо</li>*/}
-				{/*</ul>*/}
-				{/*</div>*/}
+				<div className="content__nav">
+				  <h4>Категорії:</h4>
+				  <ul>
+				  <li className={this.state.class === 'all'? 'active':''} onClick={() => this.hendlefilter('all')}>Всі</li>
+				  <li className={this.state.class === 'lending'? 'active':''}onClick={() => this.hendlefilter('lending')}>Лендінг</li>
+				  <li className={this.state.class === 'portal'? 'active':''}onClick={() => this.hendlefilter('portal')}>Портали</li>
+				  <li className={this.state.class === 'ract'? 'active':''}onClick={() => this.hendlefilter('ract')}>React</li>
+				  </ul>
+				</div>
+				<Zoom left>
 				<div className="content__items">
-				  {Object.keys(this.state.data).map((item, i) => (
+				  {this.state.isFound ?
+					 (Object.keys(this.state.data).map((item, i) => (
 					 <div key={i} className="content__items--item">
-						<img src={this.state.data[item].img} alt={i}/>
+						<img src={this.state.data[item].img} alt={this.state.data[item].title}/>
 						<div className="hover">
 						  <div className="text">
 							 <h2>{this.state.data[item].title}</h2>
@@ -103,11 +140,13 @@ class Portfolio extends React.Component {
 						  </div>
 						</div>
 					 </div>
-				  ))}
+				  )))
+				  : <p className="workNotFound">На даний момент не всі роботи загружені, натисніть кнопку "Загрузити ще..."</p> }
+				  {this.state.btnShow && !sessionStorage['BtnPortfolio'] ?
+					 this.state.isLoad ? <img className="load" src="img/load.png" alt="Загрузка"/> : <div className="BtnLoad" onClick={this.load}>Загрузити ще...</div>
+					 : null}
 				</div>
-				{this.state.btnShow && !sessionStorage['BtnPortfolio'] ?
-				  this.state.isLoad ? <img className="load" src="img/load.png" alt="Загрузка"/> : <div className="BtnLoad" onClick={this.load}>Загрузити ще...</div>
-				  : null}
+				</Zoom>
 			 </div>
 		  </div>
 		  <Footer/>

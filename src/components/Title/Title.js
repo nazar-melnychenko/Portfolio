@@ -1,5 +1,6 @@
 import React from 'react';
 import './Title.sass';
+import Flip from 'react-reveal/Flip';
 
 class Title extends React.Component{
   handleScroll = (e) => {
@@ -15,7 +16,9 @@ class Title extends React.Component{
   render() {
 	 window.addEventListener('scroll', this.handleScroll);
     return(
-		<h2 className="mainTitle">{this.props.title}</h2>
+
+			<h2 className="mainTitle"><Flip>{this.props.title}</Flip></h2>
+
 	 );
   }
 }

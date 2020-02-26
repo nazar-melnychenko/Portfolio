@@ -5,6 +5,7 @@ import Title from '../Title/Title';
 import Social from '../Social/Social';
 import Footer from '../Footer/Footer';
 import SimpleMap from './GoogleMap/GoogleMap';
+import Bounce from 'react-reveal/Bounce';
 
 class Contacts extends React.Component{
 
@@ -92,8 +93,8 @@ class Contacts extends React.Component{
 		  <div className="contactsWrapper__content">
 			 <h3>Контакти</h3>
 			 <div className="formWrapper">
-				<div className="formWrapper__form">
-				  {this.state.general ? <div className="maseeg">{this.state.general}</div> : null}
+				<Bounce left>
+					<div className="formWrapper__form">
 				  <form>
 					 <input
 						type="text"
@@ -137,7 +138,9 @@ class Contacts extends React.Component{
 					 <input type="submit" onClick={this.handleSubmit} value='Відправити' />
 				  </form>
 				</div>
-				<div className="formWrapper__contacts">
+				</Bounce>
+				<Bounce right>
+					<div className="formWrapper__contacts">
 				  <p>Зв'яжіться зі мною будь-яким зручним для Вас способом</p>
 				  <hr />
 				  <span>
@@ -157,9 +160,11 @@ class Contacts extends React.Component{
 				  <hr />
 				  <Social />
 				</div>
+				</Bounce>
 			 </div>
 		  </div>
 		  <SimpleMap />
+		  {this.state.general ? <Bounce right><div className="maseeg">{this.state.general}</div></Bounce> : null}
 		  <Footer />
 		</div>
 	 );

@@ -4,6 +4,8 @@ import Title from '../Title/Title';
 import Footer from '../Footer/Footer'
 import {NavLink} from "react-router-dom";
 import axios from "axios";
+import Fade from 'react-reveal/Fade';
+import Bounce from 'react-reveal/Bounce';
 
 
 class Blog extends React.Component{
@@ -81,12 +83,13 @@ class Blog extends React.Component{
 		<div className='blogWrapper'>
 		  <Title title='Блог' />
 		  <div className="blogWrapper__content">
-			 {this.state.isntWork ? <div className="maseeg">Більше записів не знайдено</div> : null}
+			 	{this.state.isntWork ? <Bounce right><div className="maseeg">Більше записів не знайдено</div></Bounce> : null}
 			 <h3>Блог</h3>
 			 <div className="content">
 				<div className="content__items">
 				  {Object.keys(this.state.data).map((item, i) => (
 				    <>
+					 <Fade bottom>
 					 <div key={i} className="content__items--item">
 						<div className="img">
 						  <img src={this.state.data[item].img} alt={i}/>
@@ -97,6 +100,7 @@ class Blog extends React.Component{
 						  <p className="wrapperItems__data">Дата публікації: {this.state.data[item].date}</p>
 						</div>
 					 </div>
+					 </Fade>
 					</>
 				  ))}
 

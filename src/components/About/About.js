@@ -22,8 +22,12 @@ function About() {
 				такі технології як: HTML, CSS, JS, PHP, MySQL. На цих же технологіях написав та захистив успішно дипломну роботу.</p>
 				<p>В 2020 році закінчив курси Beetroot Academy за напрямком Front-End розробка, технології які освоїв, удосконалив за час
 				навчання будуть описані нижче. Також в розділі <Link  to="/portfolio">Портфоліо</Link> Ви можете переглянути мої роботи.</p>
-				<p>Для більш детальної інформації, завантажте моє резюме:</p>
-				<a href="cv_melnychenko_nazar.docx" download><img className="cv" src="/img/ms.png" alt="Аватар"/>Резюме</a>
+				<p>Для більш детальної інформації, завантажте моє резюме, а також перейдіть на GitHub:</p><br />
+				<span className="links">
+				  <a href="cv_melnychenko_nazar.docx" download><img className="icon" src="/img/ms.png" alt="CV"/>Резюме</a>&ensp;&ensp;&ensp;&ensp;&ensp;
+				  <a href="https://github.com/nazar-melnychenko" target="_blank"><img className="icon" src="/img/github.png" alt="Git"/>GitHub</a>
+				</span>
+				<hr />
 				<h5>Технології:</h5>
 				<div className="technology">
 				  <img src="/img/about/html.png" alt="HTML"/>

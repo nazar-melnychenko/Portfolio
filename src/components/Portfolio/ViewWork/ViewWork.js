@@ -2,6 +2,7 @@ import React from 'react';
 import './ViewWork.sass'
 import axios from 'axios';
 import Footer from '../../Footer/Footer';
+import Zoom from 'react-reveal/Zoom';
 
 
 class ViewWork extends React.Component{
@@ -31,7 +32,9 @@ class ViewWork extends React.Component{
 				<div key={i} className="viewWrapperPortfolio__item">
 				  <h3>{this.state.data[item].title}</h3>
 				  <div className="viewWrapperPortfolio__item--img">
-					 <img src={this.state.data[item].img_full} alt={this.state.data[item].title}/>
+					 <Zoom>
+					 	<img src={this.state.data[item].img_full} alt={this.state.data[item].title}/>
+					 </Zoom>
 				  </div>
 				  <p className="date">Дата публікації: {this.state.data[item].date}</p>
 				  <p className="description">{this.state.data[item].description}</p>

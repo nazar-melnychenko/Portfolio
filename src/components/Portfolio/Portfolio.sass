@@ -18,56 +18,63 @@
 		flex-wrap: wrap
 		position: relative
 		min-height: 300px
-		.load
-			position: absolute
-			bottom: -50px
-			left: 50%
-			transform: translateX(-50%)
-		.BtnLoad
-			margin: 0 auto -35px
-			cursor: pointer
-			width: 137px
-			height: 100%
-			padding: 7px
-			border-radius: 7px
-			background-color: #a8a8a8
-			text-align: center
-			color: white
-			&:hover
-				background-color: rgba(15, 255, 40, 0.9)
 		
 		
-		//&__nav
-		//	flex-basis: 150px
-		//	flex-grow: 1
-		//	border-right: 1px solid rgba(24, 194, 41, 0.9)
-		//	h4
-		//		margin-top: 50px
-		//		text-transform: uppercase
-		//		text-align: center
-		//	ul
-		//		margin-left: 0
-		//		li
-		//			font-size: 12px
-		//			font-weight: 700
-		//			text-transform: uppercase
-		//			text-decoration: none
-		//			color: #60606e
-		//			padding: 5px
-		//			transition: all 0.3s linear
-		//			margin: 20px 0 0 20px
-		//			border-radius: 2px
-		//			cursor: pointer
-		//			max-width: 150px
-		//			letter-spacing: 1px
-		//		.active
-		//			margin-left: 10px
-		//			background-color: rgba(24, 194, 41, 0.9)
-		//			color: white
+		&__nav
+			flex-basis: 150px
+			flex-grow: 0.5
+			border-right: 1px solid rgba(24, 194, 41, 0.9)
+			h4
+				margin-top: 50px
+				text-transform: uppercase
+				text-align: center
+			ul
+				margin-left: 0
+				li
+					font-size: 12px
+					font-weight: 700
+					text-transform: uppercase
+					text-decoration: none
+					color: #60606e
+					padding: 5px
+					transition: all 0.3s linear
+					margin: 20px 0 0 20px
+					border-radius: 2px
+					cursor: pointer
+					max-width: 150px
+					letter-spacing: 1px
+				.active
+					margin-left: 10px
+					background-color: rgba(24, 194, 41, 0.9)
+					color: white
 		&__items
+			position: relative
 			display: flex
+			flex-grow: 3
+			flex-basis: 400px
 			flex-wrap: wrap
-			justify-content: space-around
+			justify-content: center
+			.load
+				position: absolute
+				bottom: -50px
+				left: 50%
+				transform: translateX(-50%)
+			.BtnLoad
+				cursor: pointer
+				width: 137px
+				position: absolute
+				bottom: -40px
+				left: 50%
+				transform: translateX(-50%)
+				padding: 7px
+				border-radius: 7px
+				background-color: #a8a8a8
+				text-align: center
+				color: white
+				&:hover
+					background-color: rgba(15, 255, 40, 0.9)
+			.workNotFound
+				color: red
 			&--item
 				flex-grow: 1
 				flex-basis: 240px
@@ -121,3 +128,12 @@
 					width: 100%
 					height: 100%
 					
+
+@media screen and (max-width: 604px)
+	.portfolioWrapper .content__nav
+		border: none
+		flex-basis: 100%
+	.portfolioWrapper .content__nav ul
+		display: flex
+		flex-wrap: wrap
+		justify-content: center

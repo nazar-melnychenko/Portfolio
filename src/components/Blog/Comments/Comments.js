@@ -71,6 +71,8 @@ class Comments extends React.Component {
 	 }));
   };
 
+
+
   handleSubmit = (id,e) => {
     const key = localStorage['commentKey'];
 	 if (!this.state.comments.name){
@@ -78,23 +80,18 @@ class Comments extends React.Component {
 	 }else if (!this.state.comments.text) {
 		this.setState({state: this.state.errors.text = 'Введіть коментар'});
 	 }else{
-		const name = e.target.name;
-		this.setState(prevState =>({
-		  comments:{
-			 ...prevState.comments,
-			 [name]: ''
-		  }}));
 		this.setState({state: this.state.comments.commentKey = key});
-		axios.post(`http://localhost:8888/comments.php?id=${id}`,
-		  JSON.stringify(this.state.comments)
+		 axios.post(`http://localhost:8888/comments.php?id=${id}`,
+		   JSON.stringify(this.state.comments)
 			)
 		  .then((response) => {
 				if(response){
-				  axios.get(`http://localhost:8888/comments.php?id=${this.props.id}`)
-					 .then(response => {
-						this.setState({
-						  data: response.data
-						})})
+					 axios.get(`http://localhost:8888/comments.php?id=${this.props.id}`)
+						.then(response => {
+						  console.log(response)
+						  this.setState({
+							 data: response.data
+						  })})
 				}
 		  })
 		  .catch(function (error) {
@@ -139,7 +136,7 @@ class Comments extends React.Component {
 				value={this.state.comments.name}
 				onChange={this.handleInputChange}
 			 /><br />
-			 <span>{this.state.errors.name ? this.state.errors.name : null}</span>
+			 <span>{this.state.errors.name ? this.state.errors.name : null}</span><br />
 			 <textarea
 				rows="7"
 				name="text"
@@ -147,7 +144,7 @@ class Comments extends React.Component {
 				value={this.state.comments.text}
 				onChange={this.handleInputChange}
 			 /><br />
-			 <span>{this.state.errors.text ? this.state.errors.text : null}</span>
+			 <span>{this.state.errors.text ? this.state.errors.text : null}</span><br />
 			 <input type="submit" onClick={(e) => this.handleSubmit(this.props.id,e)} value='Відправити' />
 		  </form>
 		  {this.state.data != '' ?

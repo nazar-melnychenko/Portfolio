@@ -124,7 +124,7 @@ class Portfolio extends React.Component {
 				  <li className={this.state.class === 'all'? 'active':''} onClick={() => this.hendlefilter('all')}>Всі</li>
 				  <li className={this.state.class === 'lending'? 'active':''}onClick={() => this.hendlefilter('lending')}>Лендінг</li>
 				  <li className={this.state.class === 'portal'? 'active':''}onClick={() => this.hendlefilter('portal')}>Портали</li>
-				  <li className={this.state.class === 'ract'? 'active':''}onClick={() => this.hendlefilter('ract')}>React</li>
+				  <li className={this.state.class === 'react'? 'active':''}onClick={() => this.hendlefilter('react')}>React</li>
 				  </ul>
 				</div>
 				<Zoom left>

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.sass';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 import Nav from '../Nav/Nav';
 import MobileMenu from '../MobileMenu/MobileMenu'
@@ -21,30 +21,26 @@ class App extends React.Component {
 
   render() {
 	 return (
-		 <BrowserRouter>
-			<div className="main-wrapper">
-				<div className='wrapper'>
-					<nav className="mobile">
-						<MobileMenu/>
-					</nav>
-					<nav className='nav'>
-						<Nav/>
-					</nav>
-					<main className='main'>
-						<Switch>
-							<Route exact path='/' component={Main}/>
-							<Route exact path='/about/' component={About}/>
-							<Route exact path='/portfolio/' component={Portfolio}/>
-							<Route exact path="/portfolio/:id" component={ViewWork}/>
-							{/*<Route exact path='/blog/' component={Blog}/>*/}
-							{/*<Route exact path='/blog/:id' component={ViewBlog}/>*/}
-							<Route exact path='/contacts/' component={Contacts}/>
-							<Route path='*' component={NoMatchPage}/>
-						</Switch>
-					</main>
-				</div>
-			</div>
-		 </BrowserRouter>
+		<div className='wrapper'>
+		  <nav className="mobile">
+			 <MobileMenu/>
+		  </nav>
+		  <nav className='nav'>
+			 <Nav/>
+		  </nav>
+		  <main className='main'>
+			 <Switch>
+				<Route exact path='/' component={Main}/>
+				<Route exact path='/about/' component={About}/>
+				<Route exact path='/portfolio/' component={Portfolio}/>
+				<Route exact path="/portfolio/:id" component={ViewWork}/>
+				{/*<Route exact path='/blog/' component={Blog}/>*/}
+				{/*<Route exact path='/blog/:id' component={ViewBlog}/>*/}
+				<Route exact path='/contacts/' component={Contacts}/>
+				<Route path='*' component={NoMatchPage}/>
+			 </Switch>
+		  </main>
+		</div>
 	 );
   }
 }

@@ -34,7 +34,7 @@ class MobileMenu extends React.Component{
 				<li onClick={this.hendleClose}><NavLink exact to="/" activeClassName="navActive">Головна</NavLink></li>
 				<li onClick={this.hendleClose}><NavLink  to="/about" activeClassName="navActive">Про мене</NavLink></li>
 				<li onClick={this.hendleClose}><NavLink  to="/portfolio" activeClassName="navActive">Портфоліо</NavLink></li>
-				{/*<li onClick={this.hendleClose}><NavLink  to="/blog" activeClassName="navActive">Блог</NavLink></li>*/}
+				<li onClick={this.hendleClose}><NavLink  to="/blog" activeClassName="navActive">Блог</NavLink></li>
 				<li onClick={this.hendleClose}><NavLink  to="/contacts" activeClassName="navActive">Контакти</NavLink></li>
 			 </ul>
 			 <div className="social">

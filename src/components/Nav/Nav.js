@@ -11,7 +11,7 @@ function Nav() {
 		  <li><NavLink exact to="/" activeClassName="navActive">Головна</NavLink></li>
 		  <li><NavLink  to="/about" activeClassName="navActive">Про мене</NavLink></li>
 		  <li><NavLink  to="/portfolio" activeClassName="navActive">Портфоліо</NavLink></li>
-		  <li><NavLink  to="/blog" activeClassName="navActive">Блог</NavLink></li>
+		  {/*<li><NavLink  to="/blog" activeClassName="navActive">Блог</NavLink></li>*/}
 		  <li><NavLink  to="/contacts" activeClassName="navActive">Контакти</NavLink></li>
 		</ul>
 		<Social />

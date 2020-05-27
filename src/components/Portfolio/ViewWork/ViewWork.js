@@ -16,7 +16,7 @@ class ViewWork extends React.Component{
 
   async componentDidMount() {
 	 const id= this.props.match.params.id;
-	 await axios.get(`http://localhost:8888/works.php?id=${id}`)
+	 await axios.get(`http://nm-dev.ho.ua/back/works.php?id=${id}`)
 		.then(response => {
 		  this.setState({
 			 data: response.data

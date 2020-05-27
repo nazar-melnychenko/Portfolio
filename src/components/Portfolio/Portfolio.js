@@ -33,8 +33,9 @@ class Portfolio extends React.Component {
 		  isLoad: false,
 		});
 	 } else {
-		axios.get(`http://localhost:8888/works.php`)
+		axios.get(`http://nm-dev.ho.ua/back/works.php`)
 		  .then(response => {
+		  	console.log(response);
 			 this.setState({
 				dataCopy: response.data,
 				data: response.data,
@@ -56,7 +57,7 @@ class Portfolio extends React.Component {
 		class: 'all'
 	 });
 	 let lim = this.state.limit;
-	 axios.get(`http://localhost:8888/works.php?limit=${lim}`)
+	 axios.get(`http://nm-dev.ho.ua/back/works.php?limit=${lim}`)
 		.then(response => {
 		  if (response.data) {
 			 this.setState({
@@ -122,9 +123,9 @@ class Portfolio extends React.Component {
 				  <h4>Категорії:</h4>
 				  <ul>
 				  <li className={this.state.class === 'all'? 'active':''} onClick={() => this.hendlefilter('all')}>Всі</li>
-				  <li className={this.state.class === 'lending'? 'active':''}onClick={() => this.hendlefilter('lending')}>Лендінг</li>
-				  <li className={this.state.class === 'portal'? 'active':''}onClick={() => this.hendlefilter('portal')}>Портали</li>
-				  <li className={this.state.class === 'react'? 'active':''}onClick={() => this.hendlefilter('react')}>React</li>
+				  <li className={this.state.class === 'lending'? 'active':''} onClick={() => this.hendlefilter('lending')}>Лендінг</li>
+				  <li className={this.state.class === 'wp'? 'active':''} onClick={() => this.hendlefilter('wp')}>WordPress</li>
+				  <li className={this.state.class === 'react'? 'active':''} onClick={() => this.hendlefilter('react')}>React</li>
 				  </ul>
 				</div>
 				<Zoom left>

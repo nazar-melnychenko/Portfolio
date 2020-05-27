@@ -13,7 +13,7 @@ class ViewBlog extends React.Component{
   }
 
   componentDidMount() {
-	 axios.get(`http://localhost:8888/blog.php?id=${this.props.match.params.id}`)
+	 axios.get(`http://nm-dev.ho.ua/back/blog.php?id=${this.props.match.params.id}`)
 		.then(response => {
 		  this.setState({
 			 data: response.data

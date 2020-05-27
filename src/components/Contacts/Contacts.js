@@ -53,7 +53,7 @@ class Contacts extends React.Component{
 	 }else if (!this.state.data.text) {
 		this.setState({state: this.state.errors.text = 'Введіть повідомлення'});
 	 }else{
-	 axios.post('http://localhost:8888/massege.php',
+	 axios.post('http://nm-dev.ho.ua/back/massege.php',
 		  JSON.stringify(this.state.data)
 		)
 		  .then((response) => {
@@ -115,7 +115,7 @@ class Contacts extends React.Component{
 					 <input
 						type="email"
 						name="email"
-						placeholder="Пошта *"
+						placeholder="E-mail *"
 						value={this.state.data.email}
 						onChange={this.handleInputChange}
 					 /><br />

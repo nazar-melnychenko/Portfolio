@@ -41,7 +41,7 @@ class Comments extends React.Component {
 	 if(!localStorage['commentKey']){
 		localStorage['commentKey'] = this.generateString(21);
 	 }
-	 axios.get(`http://localhost:8888/comments.php?id=${this.props.id}`)
+	 axios.get(`http://nm-dev.ho.ua/back/comments.php?id=${this.props.id}`)
 		.then(response => {
 		  this.setState({
 			 data: response.data
@@ -81,12 +81,12 @@ class Comments extends React.Component {
 		this.setState({state: this.state.errors.text = 'Введіть коментар'});
 	 }else{
 		this.setState({state: this.state.comments.commentKey = key});
-		 axios.post(`http://localhost:8888/comments.php?id=${id}`,
+		 axios.post(`http://nm-dev.ho.ua/back/comments.php?id=${id}`,
 		   JSON.stringify(this.state.comments)
 			)
 		  .then((response) => {
 				if(response){
-					 axios.get(`http://localhost:8888/comments.php?id=${this.props.id}`)
+					 axios.get(`http://nm-dev.ho.ua/back/comments.php?id=${this.props.id}`)
 						.then(response => {
 						  console.log(response)
 						  this.setState({
@@ -110,7 +110,7 @@ class Comments extends React.Component {
   };
 
   delete = (id) => {
-	 axios.delete(`http://localhost:8888/comments.php?id=${id}`)
+	 axios.delete(`http://nm-dev.ho.ua/back/comments.php?id=${id}`)
 		.then(response => {
 		  if (response) {
 			 _.remove(this.state.data, friend => friend.id === id);

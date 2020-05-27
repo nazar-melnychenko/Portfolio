@@ -32,7 +32,7 @@ class Blog extends React.Component{
 		  isLoad: false,
 		})
 	 } else {
-		axios.get(`http://localhost:8888/blog.php`)
+		axios.get(`http://nm-dev.ho.ua/back/blog.php`)
 		  .then(response => {
 			 this.setState({
 				data: response.data,
@@ -48,7 +48,7 @@ class Blog extends React.Component{
   load = () => {
 	 this.setState({isLoad: true});
 	 let lim = this.state.limit;
-	 axios.get(`http://localhost:8888/blog.php?limit=${lim}`)
+	 axios.get(`http://nm-dev.ho.ua/back/blog.php?limit=${lim}`)
 		.then(response => {
 		  if (response.data) {
 			 this.setState({

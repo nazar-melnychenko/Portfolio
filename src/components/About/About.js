@@ -13,7 +13,7 @@ function About() {
 		  <div className="content__wrapper">
 			 <div className="content__wrapper--photo">
 				<div className="img">
-				  <img src="http://placeimg.com/450/550/any" alt="Аватар"/>
+				  <img src="img/avatar.jpg" alt="Аватар"/>
 				</div>
 			 </div>
 			 <div className="content__wrapper--desc">
@@ -24,7 +24,7 @@ function About() {
 				навчання будуть описані нижче. Також в розділі <Link  to="/portfolio">Портфоліо</Link> Ви можете переглянути мої роботи.</p>
 				<p>Для більш детальної інформації, завантажте моє резюме, а також перейдіть на GitHub:</p><br />
 				<span className="links">
-				  <a href="cv_melnychenko_nazar.docx" download><img className="icon" src="/img/ms.png" alt="CV"/>Резюме</a>&ensp;&ensp;&ensp;&ensp;&ensp;
+				  <a href="Nazar_Melnychenko_CV.pdf" download><img className="icon" src="/img/ms.png" alt="CV"/>Резюме</a>&ensp;&ensp;&ensp;&ensp;&ensp;
 				  <a href="https://github.com/nazar-melnychenko" target="_blank"><img className="icon" src="/img/github.png" alt="Git"/>GitHub</a>
 				</span>
 				<hr />
@@ -42,6 +42,8 @@ function About() {
 				  <img src="/img/about/mysql.png" alt="MySql"/>
 				  <img src="/img/about/gulp.png" alt="Gulp"/>
 				  <img src="/img/about/webpack.png" alt="Webpack"/>
+				  <img src="/img/about/wordpress.png" alt="Wordpress"/>
+				  <img src="/img/about/woocommerce.png" alt="WooCommerce"/>
 
 				</div>
 			 </div>
